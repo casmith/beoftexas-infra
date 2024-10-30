@@ -1,0 +1,15 @@
+kubernetes:
+  children:
+    master:
+      hosts:
+        first:
+          ansible_user: root
+          ansible_host: 157.173.202.8
+    worker:
+      hosts:
+        second:
+          ansible_user: root
+          ansible_host: 157.173.202.7
+        third:
+          ansible_user: root
+          ansible_host: 157.173.202.5

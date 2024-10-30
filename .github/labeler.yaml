@@ -1,0 +1,8 @@
+area/ansible:
+  - any-glob-to-any-file: "ansible/**/*"
+area/github:
+  - any-glob-to-any-file: ".github/**/*"
+area/kubernetes:
+  - any-glob-to-any-file: "kubernetes/**/*"
+area/templates:
+  - any-glob-to-any-file: "template/**/*"
