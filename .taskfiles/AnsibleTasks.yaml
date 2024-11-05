@@ -51,13 +51,6 @@ tasks:
     env:
       ANSIBLE_CONFIG: "{{.ANSIBLE_DIR}}/ansible.cfg"
 
-  kube-vip:
-    desc: Apply new kube-vip configuration to the cluster
-    dir: "{{.ANSIBLE_DIR}}"
-    cmd: ansible-playbook -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yaml {{.ANSIBLE_PLAYBOOK_DIR}}/cluster-kube-vip.yaml
-    env:
-      ANSIBLE_CONFIG: "{{.ANSIBLE_DIR}}/ansible.cfg"
-
   nuke:
     desc: Uninstall Kubernetes on the nodes
     dir: "{{.ANSIBLE_DIR}}"
