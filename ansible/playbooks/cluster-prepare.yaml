@@ -33,13 +33,13 @@
             install_recommends: false
 
     - name: Packages (raspberry pi)
-      when: 
+      when:
         - ansible_architecture == "aarch64"
         - ansible_facts['distribution'] == 'Ubuntu'
       block:
         - name: Packages | Install
           ansible.builtin.apt:
-            name: linux-modules-extra-raspi 
+            name: linux-modules-extra-raspi
             install_recommends: false
 
     - name: User Configuration
@@ -130,7 +130,14 @@
               fs.inotify.max_queued_events: 65536
               fs.inotify.max_user_watches: 524288
               fs.inotify.max_user_instances: 8192
-
+        - name: install resolv.conf
+          ansible.builtin.copy:
+            content: |
+              nameserver 8.8.8.8
+              options edns0 trust-ad
+              search invalid
+            dest: /etc/resolv.conf
+            mode: preserve
   handlers:
     - name: Reboot
       ansible.builtin.reboot:
