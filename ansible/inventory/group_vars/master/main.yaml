@@ -8,6 +8,9 @@ k3s_server:
   tls-san:
     - 157.173.202.8
   docker: false
+  disable:
+  - servicelb                       # Disable servicelb               - replaced with Cilium Helm Chart
+  - traefik                         # Disable traefik
   write-kubeconfig-mode: "644"
   cluster-cidr: "{{ cluster_cidr }}"
   service-cidr: "{{ service_cidr }}"
