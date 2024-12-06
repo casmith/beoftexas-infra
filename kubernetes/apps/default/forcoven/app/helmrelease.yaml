@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: &app peppermint
+  name: &app forcoven
   namespace: default
 spec:
   interval: 15m
@@ -26,7 +26,7 @@ spec:
   values:
     image:
       repository: casmith/forcoven
-      tag: 0.0.1
+      tag: 0.0.2
 
     service:
       main:
@@ -34,16 +34,12 @@ spec:
           http:
             port: 80
 
-    nodeSelector:
-      kubernetes.io/arch: amd64
     ingress:
       main:
         enabled: true
         ingressClassName: nginx
-        annotations:
-          external-dns.alpha.kubernetes.io/target: "ingress.${SECRET_DOMAIN}"
         hosts:
-          - host: &host "{{ .Release.Name }}.${SECRET_DOMAIN}"
+          - host: &host forcoven.com
             paths:
               - path: /
                 pathType: Prefix
